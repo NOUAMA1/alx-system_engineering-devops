@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Initialization 
+hours=0
+minutes=1
+
+#while loop to display time
+while [ $hours -le 12 ]
+do
+    while [ $minutes -le 59 ]
+    do
+        printf "%02d:%02d\n" $hours $minutes
+        ((minutes++))
+    done
+    ((hours++))
+    minutes=0
+done | head -n 70

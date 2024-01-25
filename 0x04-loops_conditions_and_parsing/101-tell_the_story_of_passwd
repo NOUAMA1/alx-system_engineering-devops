@@ -1,0 +1,12 @@
+#!/bin/bash
+
+while IFS=':' read -r username _ uid gid gecos homedir shell
+do
+    # Extract additional information from gecos field
+    IFS=',' read -r _ _ _ info _ <<< "$gecos"
+    
+    # Display the story for each user
+    echo "The user $username is part of the $gid gang, lives in $homedir, and rides $shell."
+    echo "User ID's place is protected by the passcode $info, more info about the user here: $uid $info"
+    echo
+done < /etc/passwd
